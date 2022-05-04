@@ -1,0 +1,82 @@
+:root {
+  --header-background-color: rgb(236, 236, 236);
+  --table-background-color:rgb(233, 233, 233);
+  --table-border-color:black;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  /* height: 100px;
+  background-color: var(--header-background-color);
+  border-bottom: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 4rem;
+}
+/* input styling =============================== */
+form {
+  margin: 2rem auto;
+  width: min(400px, 90vw);
+  font-size: 1.2rem;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgb(248, 244, 244);
+  border-radius: 10px;
+}
+form label {
+  display: flex;
+  align-items: center;
+}
+form span {
+  width: 5rem;
+}
+form input {
+  height: 2rem;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  border: 1px solid black;
+  border-radius: 0%;
+  flex: 1;
+}
+form input[type='number'] {
+  width: 5rem;
+  flex: 0;
+}
+form button {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+/* ^^^^^^input styling========================= */
+
+/* table styling ============================ */
+table {
+  margin: 0 auto;
+  width: min(1000px, 90vw);
+  overflow: auto;
+  background-color: var(--table-background-color);
+  border-collapse: collapse;
+  border-radius: 1px solid black;
+}
+/* table head */
+thead {
+  border-bottom: 1px solid rgb(100, 136, 212);
+}
+thead th {
+  height: 2.5rem;
+  font-size: 1.3rem;
+  text-align: left;
+}
+/* table body */
+tbody {
+  font-size: 1.2rem;
+}
+tbody tr {
+  height: 2rem;
+}

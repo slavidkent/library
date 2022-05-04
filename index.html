@@ -10,22 +10,24 @@
   </head>
   <body>
     <header>
-      <h1>Library</h1>
+      <h1>Book Library</h1>
     </header>
     <main>
-      <label for="book-title">
-        Title
-        <input type="text" class="book-info book-title" id="book-title" />
-      </label>
-      <label for="book-author">
-        Author
-        <input type="text" class="book-info book-author" id="book-author" />
-      </label>
-      <label for="book-pages">
-        Pages
-        <input type="number" class="book-info book-pages" id="book-pages" />
-      </label>
-      <button type="button" class="add-book-btn">Add New Book</button>
+      <form action="#">
+        <label for="book-title">
+          <span>Title</span>
+          <input type="text" class="book-info book-title" id="book-title" />
+        </label>
+        <label for="book-author">
+          <span>Author</span>
+          <input type="text" class="book-info book-author" id="book-author" />
+        </label>
+        <label for="book-pages">
+          <span>Pages</span>
+          <input type="number" class="book-info book-pages" id="book-pages" />
+        </label>
+        <button type="button" class="add-book-btn">Add New Book</button>
+      </form>
 
       <table>
         <thead>
@@ -39,6 +41,11 @@
           </tr>
         </thead>
         <tbody class="library-table"></tbody>
+        <!-- <tfoot>
+          <tr>
+            <td>add books</td>
+          </tr>
+        </tfoot> -->
       </table>
     </main>
     <footer></footer>
