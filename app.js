@@ -26,7 +26,7 @@ const addBookBtn = document.querySelector('.add-book-btn');
 const bookInfo = document.querySelectorAll('.book-info');
 const bookTable = document.querySelector('.library-table');
 
-// event listener
+// initial event listener
 addBookBtn.addEventListener('click', addBookToLibrary);
 addBookBtn.addEventListener('click', displayConsole);
 addBookBtn.addEventListener('click', refreshLibraryTable);
@@ -34,7 +34,6 @@ addBookBtn.addEventListener('click', refreshLibraryTable);
 // ============function==============
 // add book input by user to library Array
 function addBookToLibrary() {
-  console.log(bookInfo);
   const title = bookInfo[0].value;
   const author = bookInfo[1].value;
   const pages = bookInfo[2].value;
@@ -42,7 +41,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
-// display library on page
+// Load library on page
 function refreshLibraryTable() {
   bookTable.innerHTML = '';
   let bookNumber = 0;
@@ -55,9 +54,21 @@ function refreshLibraryTable() {
       <td>${book.author}</td>
       <td>${book.pages}</td>
       <td>${book.read}</td>
+      <td><button class='remove-btn' value='${bookNumber}'><img src='./images/trash-can.svg' alt='trash can svg'/></button></td>
     `;
     bookTable.append(tableRow);
   });
+  // add eventlistener to remove-btn when library loaded
+  document
+    .querySelectorAll('.remove-btn')
+    .forEach((button) => button.addEventListener('click', removeBooksFromLibrary));
+}
+
+// remove book from myLibrary Array and refresh display page
+function removeBooksFromLibrary(e) {
+  const indexOfBookToRemove = Number(e.currentTarget.value) - 1;
+  myLibrary.splice(indexOfBookToRemove, 1);
+  refreshLibraryTable();
 }
 
 // console display ===================
