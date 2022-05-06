@@ -1,12 +1,5 @@
 //Library Array to store books
-let myLibrary = [
-  {
-    title: 'Example',
-    author: 'Joe Mama',
-    pages: 100,
-    read: true,
-  },
-];
+let myLibrary = [];
 
 // book constructor
 class Book {
@@ -17,9 +10,10 @@ class Book {
     this.read = read;
   }
   readBook() {
-    this.read ? false : true;
+    this.read = !this.read;
   }
 }
+//example
 
 // document selector
 const addBookBtn = document.querySelector('.add-book-btn');
@@ -42,32 +36,55 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
-// Load library on page
 function refreshLibraryTable() {
   bookTable.innerHTML = '';
   let bookNumber = 0;
-
   myLibrary.map((book) => {
-    const tableRow = document.createElement('tr');
     bookNumber++;
-    tableRow.innerHTML = `
-      <td>${bookNumber}</td>
-      <td>${book.title}</td>
-      <td>${book.author}</td>
-      <td>${book.pages}</td>
-      <td>${book.read ? 'Read' : 'Not read'}</td>
-      <td><button class='remove-btn' value='${bookNumber}'><img src='./images/trash-can.svg' alt='trash can svg'/></button></td>
-    `;
+    const tableRow = document.createElement('tr');
+    const tableData = [];
+    for (let i = 0; i < 6; i++) {
+      tableData.push(document.createElement('td'));
+    }
+    const readButton = document.createElement('button');
+    readButton.classList.add('read-btn');
+    readButton.value = bookNumber;
+    readButton.innerHTML = book.read
+      ? '<img src="./images/check.svg" alt="check svg">'
+      : '<img src="./images/close.svg" alt="close svg">';
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove-btn');
+    removeButton.value = bookNumber;
+    removeButton.innerHTML = "<img src='./images/trash-can.svg' alt='trash can svg'/>";
+    tableData[0].textContent = bookNumber;
+    tableData[1].textContent = book.title;
+    tableData[2].textContent = book.author;
+    tableData[3].textContent = book.pages;
+    tableData[4].textContent = book.read ? 'Read' : 'Not read';
+    tableData[4].append(readButton);
+    tableData[5].append(removeButton);
+    for (let i = 0; i < 6; i++) {
+      tableRow.append(tableData[i]);
+    }
     bookTable.append(tableRow);
   });
 
-  // add event listener to remove-btn when library loaded
+  // add event listener to form buttons after library loaded
+  // toggle function of read and not read
+  document.querySelectorAll('.read-btn').forEach((button) =>
+    button.addEventListener('click', (e) => {
+      const bookFormLib = myLibrary[e.currentTarget.value - 1];
+      bookFormLib.readBook();
+      refreshLibraryTable();
+      console.log(myLibrary);
+    })
+  );
+  // remove book from library
   document
     .querySelectorAll('.remove-btn')
     .forEach((button) => button.addEventListener('click', removeBooksFromLibrary));
 }
 
-// remove book from myLibrary Array and refresh display page
 function removeBooksFromLibrary(e) {
   const indexOfBookToRemove = Number(e.currentTarget.value) - 1;
   myLibrary.splice(indexOfBookToRemove, 1);
@@ -79,6 +96,7 @@ function displayConsole() {
   console.dir(myLibrary);
 }
 
-// initialize function for page
+// initialize page
+// add an example book
+myLibrary.push(new Book('Example', 'Joe Mama Big', 100, true));
 refreshLibraryTable();
-displayConsole();
