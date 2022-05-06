@@ -1,7 +1,7 @@
 :root {
   --header-background-color: rgb(236, 236, 236);
-  --table-background-color:rgb(233, 233, 233);
-  --table-border-color:black;
+  --table-background-color: rgb(233, 233, 233);
+  --table-border-color: black;
 }
 * {
   margin: 0;
@@ -15,6 +15,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column  ;
 }
 h1 {
   font-size: 4rem;
@@ -48,6 +49,13 @@ form input {
 form input[type='number'] {
   width: 5rem;
   flex: 0;
+}
+.form-btm-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+.book-read {
+  width: 1.5rem;
 }
 form button {
   font-size: 1.5rem;

@@ -10,7 +10,8 @@
   </head>
   <body>
     <header>
-      <h1>Book Library</h1>
+      <h1>Library</h1>
+      <p>Your Personal Book Library</p>
     </header>
     <main>
       <form action="#">
@@ -22,10 +23,16 @@
           <span>Author</span>
           <input type="text" class="book-info book-author" id="book-author" />
         </label>
-        <label for="book-pages">
-          <span>Pages</span>
-          <input type="number" class="book-info book-pages" id="book-pages" />
-        </label>
+        <div class="form-btm-wrapper">
+          <label for="book-pages">
+            <span>Pages</span>
+            <input type="number" class="book-info book-pages" id="book-pages" />
+          </label>
+          <label for="book-read">
+            <span>Read</span>
+            <input type="checkbox" class="book-info book-read" id="book-read" />
+          </label>
+        </div>
         <button type="button" class="add-book-btn">Add New Book</button>
       </form>
 
