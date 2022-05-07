@@ -8,36 +8,43 @@
     <script src="./app.js" defer></script>
     <title>The Library</title>
   </head>
-  
+
   <body>
     <header>
-      <h1>Library</h1>
+      <h1>Books Tracker</h1>
       <p>Your Personal Book Library</p>
     </header>
     <main>
-      <form action="#">
-        <label for="book-title">
-          <span>Title</span>
-          <input type="text" class="book-info book-title" id="book-title" />
-        </label>
-        <label for="book-author">
-          <span>Author</span>
-          <input type="text" class="book-info book-author" id="book-author" />
-        </label>
-        <div class="form-btm-wrapper">
-          <label for="book-pages">
-            <span>Pages</span>
-            <input type="number" class="book-info book-pages" id="book-pages" />
-          </label>
-          <label for="book-read">
-            <span>Read</span>
-            <input type="checkbox" class="book-info book-read" id="book-read" />
-          </label>
+      <dialog class="modal">
+        <div class="modal-top-wrapper">
+          <button class="close-modal-btn">
+            <img src="./images/close.svg" alt="close.svg"  />Close
+          </button>
         </div>
-        <button type="button" class="add-book-btn">Add New Book</button>
-      </form>
+        <form action="#">
+          <label for="book-title">
+            <span>Title</span>
+            <input type="text" class="book-info book-title" id="book-title" autofocus />
+          </label>
+          <label for="book-author">
+            <span>Author</span>
+            <input type="text" class="book-info book-author" id="book-author" />
+          </label>
+          <div class="form-btm-wrapper">
+            <label for="book-pages">
+              <span>Pages</span>
+              <input type="number" class="book-info book-pages" id="book-pages" />
+            </label>
+            <label for="book-read">
+              <span>Read</span>
+              <input type="checkbox" class="book-info book-read" id="book-read" />
+            </label>
+          </div>
+          <button type="button" class="add-book-btn" >Confirm</button>
+        </form>
+      </dialog>
 
-      <table class='table-main'>
+      <table class="table-main">
         <thead>
           <tr>
             <th>#</th>
@@ -51,7 +58,12 @@
         <tbody class="library-table"></tbody>
         <tfoot>
           <tr>
-            <td colspan="100"><div class="add-book-btn2"><img src="./images/book-plus.svg" alt="add book svg"><p>Add Book</p></div></td>
+            <td colspan="100" class="add-book-btn2">
+              <div>
+                <img src="./images/book-plus.svg" alt="add book svg" />
+                <p>Add Book</p>
+              </div>
+            </td>
           </tr>
         </tfoot>
       </table>

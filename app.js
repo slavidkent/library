@@ -13,20 +13,25 @@ class Book {
     this.read = !this.read;
   }
 }
-//example
 
 // document selector
 const addBookBtn = document.querySelector('.add-book-btn');
 const bookInfos = document.querySelectorAll('.book-info');
 const bookTable = document.querySelector('.library-table');
+const modal = document.querySelector('.modal');
+const addBookBtn2 = document.querySelector('.add-book-btn2');
+const closeModalBtn = document.querySelector('.close-modal-btn');
 
 // initial event listener
 addBookBtn.addEventListener('click', addBookToLibrary);
 addBookBtn.addEventListener('click', refreshLibraryTable);
-addBookBtn.addEventListener('click', displayConsole);
 
+addBookBtn2.addEventListener('click', () => modal.showModal());
+closeModalBtn.addEventListener('click', closeModal);
+
+addBookBtn.addEventListener('click', displayConsole);
 // ============function==============
-// add book input by user to library Array
+
 function addBookToLibrary() {
   const title = bookInfos[0].value;
   const author = bookInfos[1].value;
@@ -60,16 +65,18 @@ function refreshLibraryTable() {
     tableData[1].textContent = book.title;
     tableData[2].textContent = book.author;
     tableData[3].textContent = book.pages;
-    tableData[4].textContent = book.read ? 'Read' : 'Not read';
+    tableData[4].textContent = book.read ? 'Finished' : 'Not read';
     tableData[4].append(readButton);
     tableData[5].append(removeButton);
     for (let i = 0; i < 6; i++) {
       tableRow.append(tableData[i]);
     }
     bookTable.append(tableRow);
+    closeModal();
   });
 
-  // add event listener to form buttons after library loaded
+  // ====add event listener to form buttons after library loaded===
+  //
   // toggle function of read and not read
   document.querySelectorAll('.read-btn').forEach((button) =>
     button.addEventListener('click', (e) => {
@@ -91,12 +98,19 @@ function removeBooksFromLibrary(e) {
   refreshLibraryTable();
 }
 
-// console display ===================
 function displayConsole() {
   console.dir(myLibrary);
 }
 
-// initialize page
+function closeModal() {
+  modal.close();
+}
+
+// ================initialize page===================
 // add an example book
-myLibrary.push(new Book('Example', 'Joe Mama Big', 100, true));
+myLibrary.push(new Book('Example', 'Mr.Guy', 123, true));
+myLibrary.push(new Book('Joe', 'Mama', 99999, true));
+myLibrary.push(new Book('The Superior Devil Race', 'Satan', 666, false));
+myLibrary.push(new Book('Overused Hello World', 'Monkey', 5, true));
+myLibrary.push(new Book('The Making of Blue Crystal', 'Walter White', 232, false));
 refreshLibraryTable();

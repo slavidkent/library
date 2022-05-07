@@ -33,17 +33,41 @@ header {
 }
 h1 {
   font-size: 4rem;
+  margin: 2rem 0 0;
 }
 /* input styling =============================== */
+.modal {
+  border-radius: 20px;
+  margin: auto;
+  background-color: rgb(248, 244, 244);
+  gap: 1rem;
+}
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.modal-top-wrapper {
+  padding: 0, 5rem 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-top-wrapper p {
+  font-size: 1.2rem;
+}
+.close-modal-btn {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.8rem 0.2rem 0.2rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
 form {
-  margin: 2rem auto;
   width: min(400px, 90vw);
   font-size: 1.2rem;
   display: grid;
   gap: 1rem;
-  padding: 1rem;
-  background-color: rgb(248, 244, 244);
-  border-radius: 10px;
+  padding: 0.5rem 1rem 1rem;
 }
 form label {
   display: flex;
@@ -74,12 +98,13 @@ form input[type='number'] {
 form button {
   font-size: 1.5rem;
   padding: 0.5rem;
+  cursor: pointer;
 }
 /* ^^^^^^input styling========================= */
 
 /* table styling ============================ */
 .table-main {
-  margin: 0 auto;
+  margin: 2rem auto;
   width: min(1000px, 90vw);
   overflow: auto;
   background-color: var(--table-background-color);
