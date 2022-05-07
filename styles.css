@@ -1,12 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 :root {
   --header-background-color: rgb(236, 236, 236);
-  --table-background-color: rgb(233, 233, 233);
+  --table-background-color: rgb(255, 255, 255);
+  --table-background-color-even: hsl(300, 60%, 97%);
+  --table-head-background-color: hsl(320, 50%, 56%);
+  --form-background-color: hsl(320, 25%, 90%);
+
   --table-border-color: black;
+  --table-inner-border-color: hsla(0, 0%, 50%, 0.5);
+  --table-inner-border-last-color: hsla(320, 40%, 50%, 1);
+
+  --table-head-text-color: white;
+
+  --table-button-background-color: rgb(244, 240, 248);
+  --table-button-background-color-hover: rgb(230, 219, 241);
+  --table-button-border-color: rgb(224, 205, 224);
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 header {
   /* height: 100px;
@@ -15,7 +29,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column  ;
+  flex-direction: column;
 }
 h1 {
   font-size: 4rem;
@@ -64,27 +78,78 @@ form button {
 /* ^^^^^^input styling========================= */
 
 /* table styling ============================ */
-table {
+.table-main {
   margin: 0 auto;
   width: min(1000px, 90vw);
   overflow: auto;
   background-color: var(--table-background-color);
   border-collapse: collapse;
-  border-radius: 1px solid black;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.table-main th,
+td {
+  font-size: 1rem;
+  padding: 0rem 1rem;
+  height: 3.2rem;
 }
 /* table head */
-thead {
-  border-bottom: 1px solid rgb(100, 136, 212);
-}
-thead th {
-  height: 2.5rem;
-  font-size: 1.3rem;
+.table-main thead tr {
+  background-color: var(--table-head-background-color);
+  color: var(--table-head-text-color);
   text-align: left;
+  font-weight: bold;
 }
 /* table body */
-tbody {
-  font-size: 1.2rem;
+.table-main tbody tr {
+  border-bottom: 1px solid var(--table-inner-border-color);
+  background-color: var(--table-background-color);
 }
-tbody tr {
-  height: 2rem;
+.table-main tbody tr:nth-of-type(even) {
+  background-color: var(--table-background-color-even);
+}
+.table-main tbody tr td:nth-child(5) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-main tbody tr:last-child {
+  border-bottom: 3px solid var(--table-inner-border-last-color);
+}
+.table-main tbody button {
+  cursor: pointer;
+  width: 2rem;
+  background-color: var(--table-button-background-color);
+  border: 1px solid var(--table-button-border-color);
+  border-radius: 5px;
+}
+.table-main tbody button:hover {
+  background-color: var(--table-button-background-color-hover);
+}
+.table-main tbody img {
+  width: 100%;
+  height: 100%;
+}
+
+/* table foot */
+.table-main tfoot td {
+  height: 3.2rem;
+  font-size: 1.5rem;
+  background-color: var(--table-head-background-color);
+  color: var(--table-head-text-color);
+}
+.table-main tfoot td div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.table-main tfoot td img {
+  filter: invert(1);
+}
+
+.table-main tfoot td:hover {
+  background-color: rgb(247, 215, 250);
+  cursor: pointer;
 }
