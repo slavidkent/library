@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 :root {
-  --header-background-color: rgb(236, 236, 236);
   --table-background-color: rgb(255, 255, 255);
   --table-background-color-even: hsl(300, 60%, 97%);
-  --table-head-background-color: hsl(320, 50%, 56%);
-  --form-background-color: hsl(320, 25%, 90%);
+  --table-head-background-color: hsl(320, 55%, 61%);
+  --form-background-color: hsl(0, 0%, 97%);
+  --form-border-color: hsl(319, 66%, 59%);
+  --add-book-btn-border-color: rgb(70, 70, 70);
 
   --table-border-color: black;
   --table-inner-border-color: hsla(0, 0%, 50%, 0.5);
-  --table-inner-border-last-color: hsla(320, 40%, 50%, 1);
 
   --table-head-text-color: white;
+  --table-foot-text-color: white;
 
   --table-button-background-color: rgb(244, 240, 248);
   --table-button-background-color-hover: rgb(230, 219, 241);
   --table-button-border-color: rgb(224, 205, 224);
+
+  --table-foot-background-color: var(--table-head-background-color);
 }
 * {
   margin: 0;
@@ -23,9 +26,6 @@
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 header {
-  /* height: 100px;
-  background-color: var(--header-background-color);
-  border-bottom: 1px solid black; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,8 +38,9 @@ h1 {
 /* input styling =============================== */
 .modal {
   border-radius: 20px;
+  border: 5px solid var(--form-border-color);
   margin: auto;
-  background-color: rgb(248, 244, 244);
+  background-color: var(--form-background-color);
   gap: 1rem;
 }
 .modal::backdrop {
@@ -81,12 +82,15 @@ form input {
   font-size: 1.2rem;
   padding: 0.2rem;
   border: 1px solid black;
-  border-radius: 0%;
+  border-radius: 5px;
   flex: 1;
 }
 form input[type='number'] {
   width: 5rem;
   flex: 0;
+}
+.book-read[type='checkbox'] {
+  cursor: pointer;
 }
 .form-btm-wrapper {
   display: flex;
@@ -99,6 +103,11 @@ form button {
   font-size: 1.5rem;
   padding: 0.5rem;
   cursor: pointer;
+  border: 2px solid var(--add-book-btn-border-color);
+  border-radius: 5px;
+}
+form button:hover {
+  filter: invert(0.1);
 }
 /* ^^^^^^input styling========================= */
 
@@ -140,7 +149,7 @@ td {
   align-items: center;
 }
 .table-main tbody tr:last-child {
-  border-bottom: 3px solid var(--table-inner-border-last-color);
+  border-bottom: none;
 }
 .table-main tbody button {
   cursor: pointer;
@@ -161,8 +170,8 @@ td {
 .table-main tfoot td {
   height: 3.2rem;
   font-size: 1.5rem;
-  background-color: var(--table-head-background-color);
-  color: var(--table-head-text-color);
+  background-color: var(--table-foot-background-color);
+  color: var(--table-foot-text-color);
 }
 .table-main tfoot td div {
   display: flex;
@@ -175,6 +184,18 @@ td {
 }
 
 .table-main tfoot td:hover {
-  background-color: rgb(247, 215, 250);
   cursor: pointer;
+  filter: saturate(0.9) brightness(1.1);
+}
+.column1 {
+  width: 1rem;
+}
+.column4 {
+  width: 5rem;
+}
+.column5 {
+  width: 9rem;
+}
+.column6 {
+  width: 1rem;
 }
